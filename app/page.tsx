@@ -1,32 +1,76 @@
 export default function Home() {
+  const fakeMods = Array.from({ length: 12 }).map((_, i) => ({
+    id: i,
+    title: `Survival Expansion Pack ${i + 1}`,
+    author: "TMO Dev",
+    downloads: Math.floor(Math.random() * 5000 + 500),
+    likes: Math.floor(Math.random() * 300 + 20),
+  }));
+
   return (
-    <div className="min-h-screen bg-[#111315] text-white">
+    <div className="bg-[#111315] min-h-screen">
 
-      <div className="max-w-7xl mx-auto px-6 py-28">
+      {/* Filter Bar */}
+      <div className="border-b border-[#2a2e35]">
+        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between text-sm">
 
-        <h1 className="text-5xl font-bold tracking-tight">
-          Built for <span className="text-red-500">Survival</span> Modding
-        </h1>
+          <div className="flex items-center gap-6 text-gray-400">
+            <button className="hover:text-white transition">My Games</button>
+            <button className="text-white font-medium">New</button>
+            <button className="hover:text-white transition">Updated</button>
+            <button className="hover:text-white transition">Trending</button>
+            <button className="hover:text-white transition">Popular</button>
+            <button className="hover:text-white transition">Surprise</button>
+          </div>
 
-        <p className="mt-6 text-gray-400 text-lg max-w-2xl">
-          A professional platform for discovering, managing and publishing
-          survival game modifications.
-        </p>
+          <div>
+            <select className="bg-[#1a1d21] border border-[#2a2e35] px-3 py-1 rounded-md text-sm focus:outline-none focus:border-red-600">
+              <option>All Time</option>
+              <option>This Month</option>
+              <option>This Week</option>
+            </select>
+          </div>
 
-        <div className="mt-10 flex gap-6">
-          <button className="bg-red-600 hover:bg-red-700 px-8 py-3 rounded-md font-semibold transition">
-            Explore Mods
-          </button>
-
-          <button className="bg-[#1a1d21] border border-[#2a2e35] hover:border-red-500 px-8 py-3 rounded-md transition">
-            Community Forums
-          </button>
         </div>
-
       </div>
 
-      <div className="border-t border-[#2a2e35] py-6 text-center text-gray-500 text-sm">
-        © 2026 The Mod Network
+      {/* Mods Grid */}
+      <div className="max-w-7xl mx-auto px-6 py-10">
+
+        <h2 className="text-xl font-semibold mb-8">Latest Mods</h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+          {fakeMods.map((mod) => (
+            <div
+              key={mod.id}
+              className="bg-[#1a1d21] border border-[#2a2e35] rounded-md overflow-hidden hover:bg-[#20242a] transition"
+            >
+              {/* Image */}
+              <div className="h-40 bg-[#20242a]" />
+
+              {/* Content */}
+              <div className="p-4 space-y-2">
+
+                <h3 className="font-semibold text-sm leading-snug">
+                  {mod.title}
+                </h3>
+
+                <p className="text-xs text-gray-400">
+                  by {mod.author}
+                </p>
+
+                <div className="flex justify-between text-xs text-gray-400 pt-3 border-t border-[#2a2e35]">
+                  <span>⬇ {mod.downloads}</span>
+                  <span>❤ {mod.likes}</span>
+                </div>
+
+              </div>
+            </div>
+          ))}
+
+        </div>
+
       </div>
 
     </div>
