@@ -1,0 +1,38 @@
+export const mods = [
+  {
+    id: 1,
+    title: "TMO Legendary Overhaul",
+    author: "TMO Dev",
+    game: "7-days-to-die",
+    category: "Overhauls",
+    downloads: 8200,
+    likes: 542,
+  },
+  {
+    id: 2,
+    title: "7DTD UI Overhaul",
+    author: "ModSmith",
+    game: "7-days-to-die",
+    category: "UI",
+    downloads: 3200,
+    likes: 210,
+  },
+  {
+    id: 3,
+    title: "Ultra Rust Weapons Pack",
+    author: "RustPro",
+    game: "rust",
+    category: "Weapons",
+    downloads: 4100,
+    likes: 230,
+  },
+  {
+    id: 4,
+    title: "ARK Dino Expansion",
+    author: "ArkMaster",
+    game: "ark-survival-evolved",
+    category: "Creatures",
+    downloads: 12200,
+    likes: 880,
+  },
+];
