@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -14,9 +15,7 @@ export default function RegisterPage() {
       "https://themodnetwork-api.caleab-h-harless.workers.dev/api/register",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       }
     );
@@ -31,37 +30,56 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="max-w-md mx-auto py-24 px-6">
-      <h1 className="text-3xl font-bold mb-6">Create Account</h1>
+    <div className="min-h-screen flex items-center justify-center bg-[#111315] text-white px-6">
 
-      <form onSubmit={handleRegister} className="space-y-4">
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full p-3 bg-zinc-900 border border-zinc-800 rounded"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+      <div className="w-full max-w-md bg-[#1a1d21] border border-[#2a2e35] rounded-lg p-8">
 
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full p-3 bg-zinc-900 border border-zinc-800 rounded"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <h1 className="text-2xl font-semibold mb-6 text-center">
+          Create Account
+        </h1>
 
-        <button
-          type="submit"
-          className="w-full bg-red-600 hover:bg-red-700 py-3 rounded font-semibold"
-        >
-          Sign Up
-        </button>
-      </form>
+        <form onSubmit={handleRegister} className="space-y-4">
 
-      {message && <p className="mt-4 text-sm text-gray-400">{message}</p>}
+          <input
+            type="email"
+            placeholder="Email address"
+            className="w-full p-3 bg-[#111315] border border-[#2a2e35] rounded-md focus:border-red-500 focus:outline-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full p-3 bg-[#111315] border border-[#2a2e35] rounded-md focus:border-red-500 focus:outline-none"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-red-600 hover:bg-red-700 py-3 rounded-md font-semibold transition"
+          >
+            Register
+          </button>
+
+        </form>
+
+        {message && (
+          <p className="mt-4 text-sm text-gray-400 text-center">{message}</p>
+        )}
+
+        <div className="mt-6 text-center text-sm text-gray-400">
+          Already have an account?{" "}
+          <Link href="/login" className="text-red-500 hover:underline">
+            Login
+          </Link>
+        </div>
+
+      </div>
+
     </div>
   );
 }
